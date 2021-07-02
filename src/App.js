@@ -5,6 +5,8 @@ import Header from "./components/Header";
 
 function App() {
   const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState("worldwide");
+  const [countryInfo, setCountryInfo] = useState({});
 
   useEffect(() => {
     const getCountries = async () => {
@@ -20,6 +22,13 @@ function App() {
     };
     getCountries();
   }, []);
+
+  const onCountryChange = (e) => {
+    const countryCode = e.target.value;
+    setCountry(countryCode);
+    console.log(e.target.value);
+  };
+
   return (
     <div className="App">
       <Header />
@@ -28,7 +37,11 @@ function App() {
           {/* <h4>Select Country :</h4> */}
           <FormControl variant="outlined">
             <InputLabel>Country</InputLabel>
-            <Select value={"country"} label="Country">
+            <Select
+              onChange={onCountryChange}
+              value={"country"}
+              label="Country"
+            >
               <MenuItem value="worldwide">Worldwide</MenuItem>
               {countries.map((country) => {
                 return (
