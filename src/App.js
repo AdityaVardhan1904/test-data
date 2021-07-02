@@ -29,6 +29,7 @@ function App() {
           <FormControl variant="outlined">
             <InputLabel>Country</InputLabel>
             <Select value={"country"} label="Country">
+              <MenuItem value="worldwide">Worldwide</MenuItem>
               {countries.map((country) => {
                 return (
                   <MenuItem value={country.value}>{country.name}</MenuItem>
